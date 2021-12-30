@@ -18,6 +18,19 @@
 module park_space_number(enable, parking_capacity, park_number);
 input enable;
 input [7:0] parking_capacity;
-output [2:0] park_number;
- // write your code here, please.
+output reg [2:0] park_number;
+
+always @(enable) begin
+    case (parking_capacity)
+        8'b1111_1110: park_number = 3'b000;
+        8'b1111_1101: park_number = 3'b001;
+        8'b1111_1011: park_number = 3'b010;
+        8'b1111_0111: park_number = 3'b011;
+        8'b1110_1111: park_number = 3'b100;
+        8'b1101_1111: park_number = 3'b101;
+        8'b1011_1111: park_number = 3'b110;
+        8'b0111_1111: park_number = 3'b111;
+        default: park_number = 3'b000;
+    endcase 
+end
 endmodule
