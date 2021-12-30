@@ -20,17 +20,21 @@ input enable;
 input [7:0] parking_capacity;
 output reg [2:0] park_number;
 
-always @(enable) begin
-    case (parking_capacity)
-        8'b1111_1110: park_number = 3'b000;
-        8'b1111_1101: park_number = 3'b001;
-        8'b1111_1011: park_number = 3'b010;
-        8'b1111_0111: park_number = 3'b011;
-        8'b1110_1111: park_number = 3'b100;
-        8'b1101_1111: park_number = 3'b101;
-        8'b1011_1111: park_number = 3'b110;
-        8'b0111_1111: park_number = 3'b111;
-        default: park_number = 3'b000;
-    endcase 
+always @(enable or parking_capacity) begin
+    if (enable == 1) begin
+        casex (parking_capacity)
+            8'bxxxxxxx1: park_number = 3'b000;
+            8'bxxxxxx10: park_number = 3'b001;
+            8'bxxxxx100: park_number = 3'b010;
+            8'bxxxx1000: park_number = 3'b011;
+            8'bxxx10000: park_number = 3'b100;
+            8'bxx100000: park_number = 3'b101;
+            8'bx1000000: park_number = 3'b110;
+            8'b10000000: park_number = 3'b111;
+            default: park_number = 3'bxxx;
+        endcase 
+    end else begin
+        park_number = 3'bxxx;
+    end
 end
 endmodule
