@@ -6,12 +6,10 @@
 --  *******************************************************
 --  All Rights reserved (C) 2021-2022
 --  *******************************************************
---  Student ID  : 
---  Student Name: 
---  Student Mail: 
+--  Student ID  : 9931072 - 9931078
+--  Student Name: sina shariati - kimia montazeri
+--  Student Mail: sina.shariati@aut.ac.ir - kimia.mtz@gmail.com
 --  *******************************************************
---  Additional Comments:
---
 --*/
 
 /*-----------------------------------------------------------
