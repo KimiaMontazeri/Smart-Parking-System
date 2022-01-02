@@ -8,7 +8,7 @@
 --  *******************************************************
 --  Student ID  : 9931078 9931072
 --  Student Name: Kimia Montazeri & Sina Shariati
---  Student Mail: kimia.mtz@gmail.com sina.shariati@yahoo.com
+--  Student Mail: kimia.mtz@gmail.com sina.shariati@aur.ac.ir
 --  *******************************************************
 --  Additional Comments:
 --
