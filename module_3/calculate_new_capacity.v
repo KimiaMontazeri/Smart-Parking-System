@@ -19,18 +19,21 @@
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 module calculate_new_capacity(park_location, parking_capacity, new_capacity);
-    input [7:0] park_location;
-    input [7:0] parking_capacity;
+    input  [7:0] park_location;
+    input  [7:0] parking_capacity;
     output reg [7:0] new_capacity;
     integer i;
 
-    always @(park_location, parking_capacity) begin
+    always @ (park_location) begin
         for (i = 0; i < 8; i = i + 1) begin
-            if (park_location[i]) begin
-                parking_capacity[i] = 1;
+            if (park_location[i] == 1) begin
+                if (parking_capacity[i] == 0) begin
+                    new_capacity[i] = ~parking_capacity[i];
+                end else begin
+                    new_capacity[i] = parking_capacity[i];
+                end
             end
         end
     end
     
-    assign new_capacity = parking_capacity;
 endmodule
