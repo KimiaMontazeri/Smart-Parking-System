@@ -7,8 +7,8 @@
 --  All Rights reserved (C) 2021-2022
 --  *******************************************************
 --  Student ID  : 9931078
---  Student Name: Kimia Montazeri
---  Student Mail: kimia.mtz@gmail.com 
+--  Student Name: Kimia Montazeri & Sina Shariati
+--  Student Mail: kimia.mtz@gmail.com sina.shariati@yahoo.com
 --  *******************************************************
 --  Additional Comments: This module is for encrypting the park number using a certain pattern.
 --  We have used XOR operation for this purpose; and the reason behind it is that if you don't know 
