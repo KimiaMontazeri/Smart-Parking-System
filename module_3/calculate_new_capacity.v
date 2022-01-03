@@ -32,6 +32,8 @@ module calculate_new_capacity(park_location, parking_capacity, new_capacity);
                 end else begin
                     new_capacity[i] = parking_capacity[i];
                 end
+            end else begin
+                new_capacity[i] = parking_capacity[i];
             end
         end
     end
