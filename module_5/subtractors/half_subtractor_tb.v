@@ -2,9 +2,9 @@
 
 module half_subtractor_tb;
 reg bit1, bit2;
-wire diff, carry;
+wire diff, borrow;
 
-half_subtractor uut(bit1, bit2, diff, carry);
+half_subtractor uut(bit1, bit2, diff, borrow);
 
 initial begin
     $dumpfile("result.vcd");
