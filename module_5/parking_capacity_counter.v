@@ -17,12 +17,12 @@
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
 `include "./ones_counter.v"
-`include "./zeroes_counter.v"
+`include "./zeros_counter.v"
 module parking_capacity_counter(new_capacity, parked, empty);
 input [7:0] new_capacity;
 output [2:0] parked;
 output [2:0] empty;
 
 ones_counter ones_counter(new_capacity, parked);
-zeroes_counter zero_counter(parked, empty);
+zeros_counter zero_counter(parked, empty);
 endmodule
