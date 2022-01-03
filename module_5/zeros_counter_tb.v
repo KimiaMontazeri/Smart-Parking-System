@@ -9,7 +9,6 @@ initial begin
     $dumpfile("result.vcd");
     $dumpvars(0, zeroes_counter_tb);
 
-    parked = 000; #100
     parked = 001; #100
     parked = 010; #100
     parked = 011; #100
