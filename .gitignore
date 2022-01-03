@@ -2,3 +2,5 @@
 .idea
 *.vcd
 */result
+*/*/result
+.DS_Store
