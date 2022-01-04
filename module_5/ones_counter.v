@@ -2,7 +2,7 @@
 `timescale 1 ns/1 ns
 module ones_counter(new_capacity, parked);
 input [7:0] new_capacity;
-output [2:0] parked;
+output [3:0] parked;
 
 wire carry1, result1;
 wire carry2, result2; 
@@ -19,8 +19,10 @@ full_adder carries_adder(carry1, carry2, carry3, carries_sum_result, carries_sum
 full_adder results_adder(result1, result2, result3, results_sum_result, results_sum_carry);
 
 // calculate the final result
-wire ignore, middle_bit_carry;
+wire ignore, bit_1_carry, bit_2_carry;
 half_adder result_calculator_0(1'b0, results_sum_result, parked[0], ignore);
-half_adder result_calculator_1(carries_sum_result, results_sum_carry, parked[1], middle_bit_carry);
-half_adder result_calculator_2(middle_bit_carry, carries_sum_carry, parked[2], ignore);
+half_adder result_calculator_1(carries_sum_result, results_sum_carry, parked[1], bit_1_carry);
+half_adder result_calculator_2(bit_1_carry, carries_sum_carry, parked[2], bit_2_carry);
+half_adder result_calculator_3(1'b0, bit_2_carry, parked[3], ignore);
+
 endmodule
