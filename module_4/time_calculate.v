@@ -6,9 +6,9 @@
 --  *******************************************************
 --  All Rights reserved (C) 2021-2022
 --  *******************************************************
---  Student ID  : 
---  Student Name: 
---  Student Mail: 
+--  Student ID  : 9931078 9931072
+--  Student Name: Kimia Montazeri & Sina Shariati
+--  Student Mail: kimia.mtz@gmail.com sina.shariati@aut.ac.ir
 --  *******************************************************
 --  Additional Comments:
 --
@@ -18,12 +18,12 @@
 ---  Module Name: time_calculate
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
-module time_calculate(
- time_out,
- time_in,
- time);
-input [7:0] time_out;
-input [7:0] time_in;
-output [7:0] time;
- // write your code here, please.
+`include "adder_sub_8bit.v"
+module time_calculate(time_out, time_in, time_total);
+    input [7:0] time_out;
+    input [7:0] time_in;
+    output [7:0] time_total;
+    wire Cout;
+
+    adder_sub_8bit asb(time_out, time_in, 1'b1, time_total, Cout); // sel = 1 ~> subtract
 endmodule
