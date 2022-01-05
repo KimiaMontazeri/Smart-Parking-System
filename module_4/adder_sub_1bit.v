@@ -15,15 +15,25 @@
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: time_calculate
+---  Module Name: adder_sub_1bit
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
-`include "adder_sub_8bit.v"
-module time_calculate(time_out, time_in, time_total);
-    input [7:0] time_out;
-    input [7:0] time_in;
-    output [7:0] time_total;
-    wire Cout;
+module adder_sub_1bit(a, b, sel, Cin, sum, Cout);
+	 
+	 input a, b, sel, Cin;
+	 output sum, Cout;
+	 wire x, y, w0, w1, w2, w3;
+	 
+	 assign x = a;
+	 
+	 xor g0(y, b, sel);
+	 xor g1(w0, x, y);
+	 xor g2(sum, Cin, w0);
+	 
+	 and g3(w1, y, Cin);
+	 and g4(w2, x, y);
+	 and g5(w3, x, Cin);
+	 
+	 or g6(Cout, w1, w2, w3);
 
-    adder_sub_8bit asb(time_out, time_in, 1'b1, time_total, Cout); // sel = 1 ~> subtract
 endmodule

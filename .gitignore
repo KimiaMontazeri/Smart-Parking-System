@@ -1,6 +1,7 @@
 .vscode
 .idea
 *.vcd
+*.vvp
 */result
 */*/result
 .DS_Store
