@@ -32,6 +32,7 @@ module exit_parking_lot(park_number, park_location);
             3'b101: park_location = 8'b00100000;
             3'b110: park_location = 8'b01000000;
             3'b111: park_location = 8'b10000000;
+            default: park_location = 8'bxxxxxxxx;
         endcase
     end
 endmodule
