@@ -1,8 +1,8 @@
 `include "./parking_capacity_counter.v"
 module parking_capacity_counter_tb;
 reg [7:0] new_capacity;
-wire [2:0] parked;
-wire [2:0] empty;
+wire [3:0] parked;
+wire [3:0] empty;
 
 parking_capacity_counter uut(new_capacity, parked, empty);
 
