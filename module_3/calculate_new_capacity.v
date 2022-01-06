@@ -27,11 +27,7 @@ module calculate_new_capacity(park_location, parking_capacity, new_capacity);
     always @ (park_location) begin
         for (i = 0; i < 8; i = i + 1) begin
             if (park_location[i] == 1) begin
-                if (parking_capacity[i] == 0) begin
-                    new_capacity[i] = ~parking_capacity[i];
-                end else begin
-                    new_capacity[i] = parking_capacity[i];
-                end
+                new_capacity[i] = ~parking_capacity[i];
             end else begin
                 new_capacity[i] = parking_capacity[i];
             end
