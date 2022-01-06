@@ -19,10 +19,10 @@ full_adder carries_adder(carry1, carry2, carry3, carries_sum_result, carries_sum
 full_adder results_adder(result1, result2, result3, results_sum_result, results_sum_carry);
 
 // calculate the final result
-wire ignore, bit_1_carry, bit_2_carry;
-half_adder result_calculator_0(1'b0, results_sum_result, parked[0], ignore);
+wire ignore_1, ignore_2j, bit_1_carry, bit_2_carry;
+half_adder result_calculator_0(1'b0, results_sum_result, parked[0], ignore_1);
 half_adder result_calculator_1(carries_sum_result, results_sum_carry, parked[1], bit_1_carry);
 half_adder result_calculator_2(bit_1_carry, carries_sum_carry, parked[2], bit_2_carry);
-half_adder result_calculator_3(1'b0, bit_2_carry, parked[3], ignore);
+half_adder result_calculator_3(1'b0, bit_2_carry, parked[3], ignore_2);
 
 endmodule
