@@ -1,4 +1,4 @@
-`include "./full_adder.v"
+`include "counters/adders/full_adder.v"
 `timescale 1 ns/1 ns
 module ones_counter(new_capacity, parked);
 input [7:0] new_capacity;
