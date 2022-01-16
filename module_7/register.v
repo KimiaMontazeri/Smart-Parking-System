@@ -6,23 +6,25 @@
 --  *******************************************************
 --  All Rights reserved (C) 2021-2022
 --  *******************************************************
---  Student ID  : 9931072 - 9931078
---  Student Name: sina shariati - kimia montazeri
---  Student Mail: sina.shariati@aut.ac.ir - kimia.mtz@gmail.com
+--  Student ID  : 
+--  Student Name: 
+--  Student Mail: 
 --  *******************************************************
+--  Additional Comments:
+--
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: parking_capacity_counter
+---  Module Name: register
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
-`include "counters/ones_counter.v"
-`include "counters/zeros_counter.v"
-module parking_capacity_counter(new_capacity, parked, empty);
-input [7:0] new_capacity;
-output [3:0] parked;
-output [3:0] empty;
+module register(
+input [7:0] D,
+input CLK, 
+input RST,
+input en,
+output [7:0] Q;
+);
 
-ones_counter ones_counter(new_capacity, empty);
-zeros_counter zero_counter(empty, parked);
+ // write your code here, please.
 endmodule

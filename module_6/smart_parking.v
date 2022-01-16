@@ -6,23 +6,30 @@
 --  *******************************************************
 --  All Rights reserved (C) 2021-2022
 --  *******************************************************
---  Student ID  : 9931072 - 9931078
---  Student Name: sina shariati - kimia montazeri
---  Student Mail: sina.shariati@aut.ac.ir - kimia.mtz@gmail.com
+--  Student ID  : 
+--  Student Name: 
+--  Student Mail: 
 --  *******************************************************
+--  Additional Comments:
+--
 --*/
 
 /*-----------------------------------------------------------
----  Module Name: parking_capacity_counter
+---  Module Name: smart_parking
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
-`include "counters/ones_counter.v"
-`include "counters/zeros_counter.v"
-module parking_capacity_counter(new_capacity, parked, empty);
-input [7:0] new_capacity;
+module smart_parking(
+input entry,
+input [7:0] parking_capacity,
+input exit,
+input [2:0] pattern,
+input [7:0] time_out,
+input [7:0] time_in,
+output [7:0] new_capacity,
+output [7:0] time_total;
 output [3:0] parked;
 output [3:0] empty;
+);
 
-ones_counter ones_counter(new_capacity, empty);
-zeros_counter zero_counter(empty, parked);
+ // write your code here, please.
 endmodule

@@ -1,5 +1,5 @@
 `timescale 1 ns/1 ns
-`include "half_subtractor.v"
+`include "counters/subtractors/half_subtractor.v"
 
 module full_subtractor(bit1, bit2, borrow_in, diff, borrow_out);
 input bit1;
