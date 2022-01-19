@@ -23,6 +23,10 @@ input RST,
 input en,
 output [7:0] Q;
 );
-
- // write your code here, please.
+always @(posedge CLK) begin
+    if (reset) 
+       Q = 8'b0000_0000 ;
+    else
+        Q = D;
+end
 endmodule
