@@ -21,12 +21,13 @@ input [7:0] D,
 input CLK, 
 input RST,
 input en,
-output [7:0] Q;
+output reg [7:0] Q
 );
 always @(posedge CLK) begin
-    if (reset) 
-       Q = 8'b0000_0000 ;
-    else
+    if (RST) begin
+       Q = 8'b0000_0000;
+    end else if(en) begin
         Q = D;
+    end
 end
 endmodule
