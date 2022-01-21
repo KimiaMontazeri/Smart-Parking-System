@@ -13,27 +13,27 @@ output reg Q_register_enable;
 
 reg [2:0] present_state, next_state;
 
-parameter A = 3'b000, B = 3'b001, E = 3'b100, C = 3'b111, D = 3'b011;
+parameter start = 3'b000, system_ready = 3'b001, trap = 3'b100, correct_token = 3'b111, enable_register = 3'b011;
 
 // set present state to equal next state
 always @ (posedge clock) begin
     if (~reset) begin
-        present_state = A;
-        next_state = A;
+        present_state = start;
+        next_state = start;
     end 
     present_state = next_state;
 
     case (present_state)
-        B: begin
-            if (confirm == 1'b1 && user_token == system_token) next_state = C; 
-            else if(confirm == 1'b1 && user_token != system_token) next_state = E;
+        system_ready: begin
+            if (confirm == 1'b1 && user_token == system_token) next_state = correct_token; 
+            else if(confirm == 1'b1 && user_token != system_token) next_state = trap;
         end
 
-        C: begin
-            if (confirm == 1'b1) next_state = D; 
+        correct_token: begin
+            if (confirm == 1'b1) next_state = enable_register; 
         end
 
-        D: begin
+        enable_register: begin
             if (time_data[4] == 1'b1 && time_data[5] == 1'b1 && time_data[6] ==  1'b1 && time_data[7] == 1'b1) 
             begin
                     P_register_enable = 1'b1;
@@ -49,12 +49,12 @@ always @ (posedge clock) begin
 end
 
 always @(negedge request) begin
-    present_state = A;
-    next_state = A;
+    present_state = start;
+    next_state = start;
 end
 
 always @(posedge request) begin
-   next_state = B;
+   next_state = system_ready;
 end
 
 endmodule
