@@ -24,7 +24,7 @@ input en,
 output reg [7:0] Q
 );
 always @(posedge CLK) begin
-    if (RST) begin
+    if (~RST) begin
        Q = 8'b0000_0000;
     end else if(en) begin
         Q = D;
