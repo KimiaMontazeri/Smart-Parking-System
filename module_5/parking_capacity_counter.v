@@ -16,8 +16,8 @@
 ---  Module Name: parking_capacity_counter
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
-`include "counters/ones_counter.v"
-`include "counters/zeros_counter.v"
+`include "../module_5/counters/ones_counter.v"
+`include "../module_5/counters/zeros_counter.v"
 module parking_capacity_counter(new_capacity, parked, empty);
 input [7:0] new_capacity;
 output [3:0] parked;

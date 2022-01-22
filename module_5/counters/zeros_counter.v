@@ -1,4 +1,4 @@
-`include "counters/subtractors/full_subtractor.v"
+`include "../module_5/counters/subtractors/full_subtractor.v"
 `timescale 1 ns/1 ns
 
 module zeros_counter(parked, empty);

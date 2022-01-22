@@ -18,7 +18,7 @@
 ---  Module Name: time_calculate
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
-`include "adder_sub_8bit.v"
+`include "../module_4/adder_sub_8bit.v"
 module time_calculate(time_out, time_in, time_total);
     input [7:0] time_out;
     input [7:0] time_in;

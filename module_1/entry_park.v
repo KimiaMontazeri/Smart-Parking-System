@@ -15,8 +15,8 @@
 /*-----------------------------------------------------------
 ---  Module Name: entry_park 
 -----------------------------------------------------------*/
-`include "./entry_checker.v"
-`include "./park_space_number.v"
+`include "../module_1/entry_checker.v"
+`include "../module_1/park_space_number.v"
 `timescale 1 ns/1 ns
 module entry_park(entry,parking_capacity,park_number);
 input entry;
