@@ -6,12 +6,10 @@
 --  *******************************************************
 --  All Rights reserved (C) 2021-2022
 --  *******************************************************
---  Student ID  : 
---  Student Name: 
---  Student Mail: 
+--  Student ID  : 9931072 - 9931078
+--  Student Name: sina shariati - kimia montazeri
+--  Student Mail: sina.shariati@aut.ac.ir - kimia.mtz@gmail.com
 --  *******************************************************
---  Additional Comments:
---
 --*/
 
 /*-----------------------------------------------------------
@@ -23,8 +21,13 @@ input [7:0] D,
 input CLK, 
 input RST,
 input en,
-output [7:0] Q;
+output reg [7:0] Q
 );
-
- // write your code here, please.
+always @(posedge CLK) begin
+    if (~RST) begin
+       Q = 8'b0000_0000;
+    end else if(en) begin
+        Q = D;
+    end
+end
 endmodule
