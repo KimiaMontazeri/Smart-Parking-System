@@ -18,7 +18,7 @@
 ---  Module Name: adder_sub_8bit
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
-`include "adder_sub_1bit.v"
+`include "../module_4/adder_sub_1bit.v"
 module adder_sub_8bit(A, B, sel, Z, Cout);
     input [7:0] A;
     input [7:0] B;

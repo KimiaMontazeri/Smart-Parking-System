@@ -18,8 +18,8 @@
 ---  Module Name: exti_park 
 -----------------------------------------------------------*/
 `timescale 1 ns/1 ns
-`include "decrypt.v" 
-`include "exit_parking_lot.v"
+`include "../module_3/decrypt.v" 
+`include "../module_3/exit_parking_lot.v"
 module exit_park(exit, token, pattern, park_location);
     input exit;
     input  [2:0] token;

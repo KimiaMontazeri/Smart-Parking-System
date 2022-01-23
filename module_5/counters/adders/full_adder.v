@@ -1,5 +1,5 @@
 `timescale 1 ns/1 ns
-`include "counters/adders/half_adder/half_adder.v"
+`include "../module_5/counters/adders/half_adder/half_adder.v"
 module full_adder(bit1, bit2, carry_in, result, carry_out);
 input bit1;
 input bit2;
