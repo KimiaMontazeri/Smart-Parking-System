@@ -1,60 +1,55 @@
-`timescale 1ps/1ps
+`timescale 1ns / 1ps
+module register_manager(
+    input [2:0] system_token,
+    input [2:0] user_token,
+    input [7:0] TimeData,
+    input clock,
+    input request,
+    input confirm,
+    input reset,
+    output reg RegP,
+    output reg RegQ
+);
+    reg [2:0] present_state, next_state;
+    parameter A = 3'b000, B = 3'b001, C = 3'b101, D = 3'b111, E = 3'b110;
 
-module register_manager(system_token, user_token, time_data ,clock, request, confirm, reset,P_register_enable, Q_register_enable);
-input [2:0] system_token;
-input [2:0] user_token;
-input [7:0] time_data;
-input clock;
-input request;
-input confirm;
-input reset;
-output reg P_register_enable;
-output reg Q_register_enable;
+    always @(posedge clock or negedge request)
+    begin
+        if (request) present_state = next_state;
+        else present_state = A;
+    end
 
-reg [2:0] present_state, next_state;
-
-parameter start = 3'b000, system_ready = 3'b001, trap = 3'b100, correct_token = 3'b111, enable_register = 3'b011;
-
-// set present state to equal next state
-always @ (posedge clock) begin
-    if (~reset) begin
-        present_state = start;
-        next_state = start;
-    end 
-    present_state = next_state;
-
+    always @ (present_state or request or confirm or TimeData)
     case (present_state)
-        system_ready: begin
-            if (confirm == 1'b1 && user_token == system_token) next_state = correct_token; 
-            else if(confirm == 1'b1 && user_token != system_token) next_state = trap;
-        end
-
-        correct_token: begin
-            if (confirm == 1'b1) next_state = enable_register; 
-        end
-
-        enable_register: begin
-            if (time_data[4] == 1'b1 && time_data[5] == 1'b1 && time_data[6] ==  1'b1 && time_data[7] == 1'b1) 
+    A:
+        if (request) next_state = B;
+        else next_state = A;
+    B:
+        if (~request) next_state = A;
+        else if (~confirm) next_state = B;
+        else if (system_token == user_token) next_state = C;
+        else if (system_token != user_token) next_state = E;
+    C:
+        if (~request) next_state = A;
+        else if (confirm) next_state = D;
+        else next_state = C;
+    D:
+        if (~request) next_state = A;
+        else if (confirm)
+        begin
+            if (TimeData[3] == 1'b1 & TimeData[4] == 1'b1 & TimeData[5] == 1'b1 & TimeData[6] == 1'b1 & TimeData[7] == 1'b1)
             begin
-                    P_register_enable = 1'b1;
-                    Q_register_enable = 1'b0; 
+                RegP = 1'b1;
+                RegQ = 1'b0;
             end
-            else begin
-                    P_register_enable = 1'b0;
-                    Q_register_enable = 1'b1; 
-            end 
+            else
+            begin
+                RegQ = 1'b1;
+                RegP = 1'b0;
+            end
         end
-        default: present_state = 3'bxxx;
+    E:
+        if (~request) next_state = A;
+        else next_state = E;
     endcase
-end
-
-always @(negedge request) begin
-    present_state = start;
-    next_state = start;
-end
-
-always @(posedge request) begin
-   next_state = system_ready;
-end
-
 endmodule
