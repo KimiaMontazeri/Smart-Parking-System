@@ -38,14 +38,28 @@ output [3:0] parked,
 output [3:0] empty
 );
 
+    // wire [2:0] park_number;
+    // wire [2:0] token;
+    // wire [7:0] park_location;
+
+    // entry_park entered(entry, parking_capacity, park_number); // module 1
+    // token_production get_token(park_number, pattern, token);  // module 2
+    // exit_park has_exited(exit, token, pattern, park_location); // module 3
+    // calculate_new_capacity get_new_cap(park_location, parking_capacity, new_capacity); // module 3
+    // parking_capacity_counter get_parking_cap(new_capacity, parked, empty); // module 4
+    // time_calculate cal_time(time_out, time_in, time_total); // module 5
+
     wire [2:0] park_number;
     wire [2:0] token;
     wire [7:0] park_location;
+    wire [7:0] parking_capacity_new;
+    wire [7:0] cap;
 
-    entry_park entered(entry, parking_capacity, park_number); // module 1
-    token_production get_token(park_number, pattern, token);  // module 2
-    exit_park has_exited(exit, token, pattern, park_location); // module 3
-    calculate_new_capacity get_new_cap(park_location, parking_capacity, new_capacity); // module 3
-    parking_capacity_counter get_parking_cap(new_capacity, parked, empty); // module 4
-    time_calculate cal_time(time_out, time_in, time_total); // module 5
+    entry_park has_entered(entry, parking_capacity, park_number);
+    update_capacity update_cap(entry, parking_capacity, parking_capacity_new, cap);
+    token_production get_token(park_number, pattern, token);
+    exit_park has_exited(exit, token, pattern, park_location);
+    calculate_new_capacity get_new_cap(park_location, parking_capacity_new, new_capacity);
+    parking_capacity_counter get_parking_cap(new_capacity, parked, empty);
+    time_calculate cal_time(time_out, time_in, time_total);
 endmodule
