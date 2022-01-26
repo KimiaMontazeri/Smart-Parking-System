@@ -35,22 +35,22 @@ always @(*)
 	begin
 		if(check)
 			begin
-				if (parking_capacity[7]==1)
-				cap=8'b10000000;
-				else if(parking_capacity[6]==1)
-				cap=8'b01000000;
-				else if(parking_capacity[5]==1)
-				cap=8'b00100000;
-				else if(parking_capacity[4]==1)
-				cap=8'b00010000;
-				else if(parking_capacity[3]==1)
-				cap=8'b00001000;
-				else if(parking_capacity[2]==1)
-				cap=8'b00000100;
+				if(parking_capacity[0]==1)
+				cap=8'b00000001;
 				else if(parking_capacity[1]==1)
 				cap=8'b00000010;
-				else if(parking_capacity[0]==1)
-				cap=8'b00000001;
+				else if(parking_capacity[2]==1)
+				cap=8'b00000100;
+				else if(parking_capacity[3]==1)
+				cap=8'b00001000;
+				else if(parking_capacity[4]==1)
+				cap=8'b00010000;
+				else if(parking_capacity[5]==1)
+				cap=8'b00100000;
+				else if(parking_capacity[6]==1)
+				cap=8'b01000000;
+				else if (parking_capacity[7]==1)
+				cap=8'b10000000;
 			end
 			
 		else cap = 8'b00000000;
